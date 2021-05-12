@@ -32,7 +32,6 @@ http_archive(
     url = "https://github.com/bazelbuild/rules_scala/archive/c9cc7c261d3d740eb91ef8ef048b7cd2229d12ec.zip",
 )
 
-load("@rules_jvm_external//:defs.bzl", "maven_install")
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 
 rules_proto_dependencies()
@@ -41,25 +40,28 @@ rules_proto_toolchains()
 
 load("@io_bazel_rules_scala//:scala_config.bzl", "scala_config")
 
-scala_config(scala_version = "2.13.x")
+scala_config(scala_version = "2.12.13")
 
-load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
-
-scala_repositories()
+load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
     artifacts = [
-        "com.thesamet.scalapb:scalapb-runtime_2.13:0.11.2",
-        "com.thesamet.scalapb:scalapb-runtime-grpc_2.13:0.11.2",
-        "com.thesamet.scalapb:compilerplugin_2.13:0.11.2",
-        "com.thesamet.scalapb:protoc-bridge_2.13:0.9.2",
-        "com.thesamet.scalapb:protoc-gen_2.13:0.9.2",
-        "com.thesamet.scalapb:lenses_2.13:0.11.2",
-        "com.thesamet.scalapb.zio-grpc:zio-grpc-codegen_2.13:0.5.0",
-        "com.thesamet.scalapb.zio-grpc:zio-grpc-core_2.13:0.5.0",
-        "dev.zio:zio_2.13:1.0.7",
-        "dev.zio:izumi-reflect_2.13:1.1.1",
-        "dev.zio:izumi-reflect-thirdparty-boopickle-shaded_2.13:1.1.1",
+        "org.scala-lang:scala-library:2.12.13",
+        "org.scala-lang:scala-compiler:2.12.13",
+        "org.scala-lang:scala-reflect:2.12.13",
+        "org.scala-lang.modules:scala-xml_2.12:1.3.0",
+        "org.scala-lang.modules:scala-parser-combinators_2.12:1.1.2",
+        "com.thesamet.scalapb:scalapb-runtime_2.12:0.11.2",
+        "com.thesamet.scalapb:scalapb-runtime-grpc_2.12:0.11.2",
+        "com.thesamet.scalapb:compilerplugin_2.12:0.11.2",
+        "com.thesamet.scalapb:protoc-bridge_2.12:0.9.2",
+        "com.thesamet.scalapb:protoc-gen_2.12:0.9.2",
+        "com.thesamet.scalapb:lenses_2.12:0.11.2",
+        "com.thesamet.scalapb.zio-grpc:zio-grpc-codegen_2.12:0.5.0",
+        "com.thesamet.scalapb.zio-grpc:zio-grpc-core_2.12:0.5.0",
+        "dev.zio:zio_2.12:1.0.7",
+        "dev.zio:izumi-reflect_2.12:1.1.1",
+        "dev.zio:izumi-reflect-thirdparty-boopickle-shaded_2.12:1.1.1",
         "io.grpc:grpc-api:1.37.0",
         "io.grpc:grpc-core:1.37.0",
         "io.grpc:grpc-stub:1.37.0",
@@ -74,10 +76,8 @@ maven_install(
     ],
 )
 
-load("@io_bazel_rules_scala//scala:toolchains.bzl", "scala_register_toolchains")
-
-scala_register_toolchains()
+register_toolchains("//:scala_toolchain")
 
 register_toolchains("//:scala_proto_deps_toolchain")
 
-register_toolchains("//:scalapb_zio_grpc_toolchain")
+register_toolchains("//:scala_proto_zio_grpc_toolchain")
