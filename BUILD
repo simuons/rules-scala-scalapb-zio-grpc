@@ -71,7 +71,7 @@ declare_deps_provider(
     name = "scalapb_worker_deps_provider",
     deps_id = "scalapb_worker_deps",
     deps = [
-        "@com_google_protobuf//:protobuf_java",
+        "@maven//:com_google_protobuf_protobuf_java",
         "@maven//:com_thesamet_scalapb_compilerplugin_2_12",
         "@maven//:com_thesamet_scalapb_protoc_bridge_2_12",
     ],
@@ -81,7 +81,7 @@ declare_deps_provider(
     name = "scalapb_compile_deps_provider",
     deps_id = "scalapb_compile_deps",
     deps = [
-        "@com_google_protobuf//:protobuf_java",
+        "@maven//:com_google_protobuf_protobuf_java",
         "@maven//:com_thesamet_scalapb_lenses_2_12",
         "@maven//:com_thesamet_scalapb_scalapb_runtime_2_12",
         "@maven//:com_thesamet_scalapb_scalapb_runtime_grpc_2_12",

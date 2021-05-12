@@ -51,6 +51,7 @@ maven_install(
         "org.scala-lang:scala-reflect:2.12.13",
         "org.scala-lang.modules:scala-xml_2.12:1.3.0",
         "org.scala-lang.modules:scala-parser-combinators_2.12:1.1.2",
+        "com.google.protobuf:protobuf-java:3.16.0",
         "com.thesamet.scalapb:scalapb-runtime_2.12:0.11.2",
         "com.thesamet.scalapb:scalapb-runtime-grpc_2.12:0.11.2",
         "com.thesamet.scalapb:compilerplugin_2.12:0.11.2",
